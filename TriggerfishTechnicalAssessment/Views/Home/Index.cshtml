@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Article>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap-grid.css" rel="stylesheet" />
+    <link href="~/css/custom-styles.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="album py-3 articles">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                @foreach (Article article in Model)
+                {
+                    <div class="col">
+                        <div class="card card-no-border">
+                            <div class="card-img-top">
+                                <img class="custom-image" src="@article.ImageUrl" alt="Image1" />
+                            </div>
+                            <div class="card-body py-1">
+                                <small class="text-muted">@article.ReadTime.ToString() minute read</small>
+                                <h4 class="fw-bold mb-3 mt-1">@article.Title</h4>
+                                <p class="card-text mb-3">
+                                    @article.Description
+                                </p>
+                                <div class="mb-2 d-flex align-items-center">
+                                    <img class="custom-icon" src="~/images/ArrowRight.PNG" alt="Read" />
+                                    <span class="fw-bolder pl-2">READ OUR INSIGHTS</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>
